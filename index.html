@@ -1,0 +1,69 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Bar Games</title>
+  <link rel="stylesheet" href="http://code.jquery.com/mobile/1.0rc1/jquery.mobile-1.0rc1.min.css" />
+  <script src="http://code.jquery.com/jquery-1.6.4.min.js"></script>
+  <script src="http://code.jquery.com/mobile/1.0rc1/jquery.mobile-1.0rc1.min.js"></script>
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.1.7/underscore-min.js"></script>
+  <script src="assets/js/bargames.js"></script>
+</head>
+<body>
+
+  <div data-role="page" id="gameSelect">
+    <div data-role="header">
+      <h1>Select a Game</h1>
+    </div>
+  </div>
+
+
+  <div data-role="page" id="gameTypeSelect" data-add-back-btn="true">
+    <div data-role="header">
+      <h1>Select a Game Type</h1>
+    </div>
+  </div>
+
+
+  <div data-role="page" id="playerSelect" data-add-back-btn="true">
+    <div data-role="header">
+      <h1>Select Players</h1>
+    </div>
+
+  </div>
+
+
+  <div data-role="page" id="finalizeGame" data-add-back-btn="true">
+
+  </div>
+
+
+  <script id="gameSelectTemplate" type="text/html">
+    <p>
+    <% for (var game in data) { %>
+      <a href="#gameTypeSelect" data-role="button" data-game="<%= game %>" class="game<%= game %>"><%= game %></a>
+    <% } %>
+    </p>
+  </script>
+
+  <script id="gameTypeTemplate" type="text/html">
+    <p>
+    <% for (var type in data) { %>
+      <a href="#playerSelect" data-role="button" data-type="<%= type %>" data-game="<%= game %>" class="type<%= type %>"><%= type %></a>
+    <% } %>
+    </p>
+  </script>
+
+  <script id="playerSelectTemplate" type="text/html">
+    <fieldset data-role="controlgroup">
+      <legend>Team X</legend>
+    <% for (var player, i = 0; player = players[i], i < players.length; i++) { %>
+      <input type="checkbox" name="checkbox-<%= i %>a" id="checkbox-<%= i %>a" class="custom" />
+      <label for="checkbox-<%= i %>a"><%= player.name %></label>
+    <% } %>
+    </fieldset>
+  </script>
+
+</body>
+</html>
